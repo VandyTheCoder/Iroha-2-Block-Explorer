@@ -1,5 +1,5 @@
 # Iroha 2 - Block Explorer
-Welcome to the Iroha 2 - Block Explorer! This is a Ruby on Rails application that [briefly describe the purpose and features of your project].
+Welcome to the Iroha 2 - Block Explorer! This is a Ruby on Rails application that will be used to render the block explorer website for Iroha 2. This repository is still under development and thanks to the wonderful [Iroha 2](https://iroha.tech/) team that have inspired to implement this repository.
 
 ## Prerequisites
 Before you begin, make sure you have the following installed:
