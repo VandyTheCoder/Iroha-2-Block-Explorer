@@ -1,0 +1,43 @@
+#home-page
+  .container
+    .row
+      .col-md-12
+        .m-t-25
+        .sorakh-panel
+          .title
+            %h4= t("blocks")
+          .table-responsive
+            %table.table
+              %thead
+                %tr
+                  %th= t("height")
+                  %th= t("timestamp")
+                  %th= t("hash")
+                  %th.text-center= t("status")
+              %tbody
+                - @blocks["data"]&.each do |block|
+                  - block_header = block["header"]
+                  - block_valid_transactions = block["transactions"]
+                  - transaction_hash = block_valid_transactions&.size != 0 ? block_header["transactionsHash"]["hash"]["array"] : block_header["rejectedTransactionsHash"]["hash"]["array"]
+                  %tr
+                    %td
+                      = link_to block_header["height"], home_page_show_url(hash: transaction_hash), class: "text-muted"
+                    %td.text-muted= Time.at((block_header["timestamp"].to_i)/1000)
+                    %td= block_header["currentBlockHash"]["array"]
+                    %td.text-center.parent-status
+                      .transaction-status__icon{class: (block_valid_transactions&.size != 0 ? "committed" : "rejected")}
+                        - if block_valid_transactions&.size != 0
+                          %svg{fill: "none", viewbox: "0 0 14 10", xmlns: "http://www.w3.org/2000/svg"}
+                            %path{d: "M5 10c.42 0 .79-.15 1.1-.44l7.44-7.06c.3-.3.46-.64.46-1.03 0-.4-.15-.76-.46-1.05-.3-.28-.66-.42-1.09-.42-.43 0-.8.14-1.1.42L5.02 6.41l-.03.01-.03-.01-2.3-2.18a1.46 1.46 0 0 0-.51-.32 1.48 1.48 0 0 0-.59-.12c-.44 0-.8.14-1.1.42-.15.14-.26.3-.35.48a1.41 1.41 0 0 0 .35 1.6l3.43 3.27c.3.3.67.44 1.1.44Z", fill: "currentColor"}
+                        - else
+                          %svg{fill: "none", viewbox: "0 0 12 12", xmlns: "http://www.w3.org/2000/svg"}
+                            %path{d: "M11 11c.29-.29.43-.63.43-1.04 0-.4-.14-.74-.43-1.03L8.62 6.55A.73.73 0 0 1 8.39 6c0-.22.08-.4.23-.56L11 3.07c.29-.29.43-.63.43-1.03S11.29 1.29 11 1A1.41 1.41 0 0 0 9.96.57c-.4 0-.74.14-1.03.43L6.55 3.38a.78.78 0 0 1-.55.24.78.78 0 0 1-.55-.24L3.07 1A1.41 1.41 0 0 0 2.04.57C1.64.57 1.29.71 1 1c-.29.29-.43.63-.43 1.04 0 .4.14.74.43 1.03l2.38 2.38c.15.15.23.34.23.56 0 .2-.08.39-.23.54L1 8.93c-.29.29-.43.63-.43 1.03s.14.75.43 1.04c.29.29.63.43 1.04.43.4 0 .74-.14 1.03-.43l2.38-2.38A.71.71 0 0 1 6 8.4c.21 0 .4.07.55.22L8.93 11c.29.29.63.43 1.03.43s.75-.14 1.04-.43Z", fill: "currentColor"}
+
+        %nav{"aria-label" => "Page navigation example"}
+          %ul.pagination.sorakh-pagination
+            - if @page.to_i > 1
+              %li.page-item
+                = link_to t("previous"), root_url(index: (@page.to_i - 10)), class: "page-link"
+            - if (@page.to_i + 10) < @blocks["total"].to_i 
+              %li.page-item
+                = link_to t("next"), root_url(index: (@page.to_i + 10)), class: "page-link"

@@ -1,0 +1,53 @@
+- block_header = block["header"]
+- block_valid_transactions = block["transactions"]
+- block_rejected_transactions = block["rejectedTransactions"]
+
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "BlockModal#{block_header["height"]}Label", id: "BlockModal#{block_header["height"]}", tabindex: "-1"}
+  .modal-dialog.modal-xl
+    .modal-content.sorakh-modal-content
+      .modal-header
+        %h1.modal-title.fs-5{id: "BlockModal#{block_header["height"]}"}
+          = t("block_detail")
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", type: "button"}
+      .modal-body
+        .row.block-detail
+          .col-md-3
+            %p.text-muted= t("height")
+          .col-md-9
+            = block_header["height"]
+        %hr.divider-line
+        .row.block-detail
+          .col-md-3
+            %p.text-muted= t("timestamp")
+          .col-md-9
+            = Time.at((block_header["timestamp"].to_i)/1000)
+
+        %hr.divider-line
+        .row.block-detail
+          .col-md-3
+            %p.text-muted= t("hash")
+          .col-md-9
+            = block_header["currentBlockHash"]["array"]
+        
+        %hr.divider-line
+        .row.block-detail
+          .col-md-3
+            %p.text-muted= t("prev_hash")
+          .col-md-9
+            = block_header["previousBlockHash"]["array"]
+        
+        %hr.divider-line
+        .row.block-detail
+          .col-md-3
+            %p.text-muted= t("committed")
+          .col-md-9
+            = block_valid_transactions&.size
+
+        %hr.divider-line
+        .row.block-detail
+          .col-md-3
+            %p.text-muted= t("rejected")
+          .col-md-9
+            = block_rejected_transactions&.size
+        %br/
+        %br/

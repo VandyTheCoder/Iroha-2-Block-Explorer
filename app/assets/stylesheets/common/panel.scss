@@ -1,0 +1,15 @@
+.sorakh-panel {
+  padding-top: 30px;
+  padding-left: 40px;
+  padding-bottom: 40px;
+  padding-right: 40px;
+  width: 100%;
+  min-height: 700px;
+  box-shadow: -5px -5px 10px #FFFFFF, 1px 1px 10px rgba(0, 0, 0, 0.1), inset 1px 1px 10px #FFFFFF;
+  border-radius: 50px;
+  background-color: #FAFAFA;
+
+  .title {
+    border-bottom: 2px solid #F5F2F2;
+  }
+}

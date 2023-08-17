@@ -1,0 +1,5 @@
+{
+  "name": "iroha2-block-explorer",
+  "private": true,
+  "dependencies": {}
+}

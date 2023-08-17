@@ -1,0 +1,15 @@
+@import "bootstrap";
+@import "./common/*";
+@import "./home_page/*";
+
+@font-face {
+  font-family: "Sora";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sora"), url("/fonts/sora/Sora-VariableFont_wght.woff") format("woff"), url("/fonts/sora/Sora-VariableFont_wght.ttf") format("truetype");
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background-color: #F5F2F2;
+}

@@ -1,0 +1,22 @@
+.sorakh-pagination {
+  margin-top: 20px;
+  float: right;
+
+  .page-item {
+    margin-left: 10px;
+
+    a.page-link {
+      border-radius: 50px;
+      box-shadow: -5px -5px 10px #FFFFFF, 1px 1px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #F5F2F2 !important;
+      background-color: #F5F2F2;
+      text-decoration: none;
+      color: #AA9999;
+      font-weight: bold;
+
+      &:focus {
+        box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.04), inset -5px -5px 5px rgba(255, 255, 255, 0.03);
+      }
+    }
+  }
+}
