@@ -1,11 +1,13 @@
 # Iroha 2 - Block Explorer
 Welcome to the Iroha 2 - Block Explorer! This is a Ruby on Rails application that will be used to render the block explorer website for Iroha 2. This repository is still under development and thanks to the wonderful [Iroha 2](https://iroha.tech/) team that have inspired to implement this repository.
+![Demo picture](./public/demo.png)
 
 ## Prerequisites
 Before you begin, make sure you have the following installed:
 
-- Ruby : `2.6.9` (RVM recommended)
-- Ruby on Rails: `5.2.8`
+- Ruby : `3.0.3` (RVM recommended)
+- Ruby on Rails : `6.1.7.4`
+- iroha-2-client-service : it is required as backend to communicate with Iroha 2.
 
 ## Getting Started
 Follow these steps to set up and run the project locally on your machine.
@@ -39,7 +41,6 @@ Start the Rails server:
 ```sh
 rails server
 ```
-Your application should now be running at http://localhost:3000.
 
 ### Step 4: Access the Application
 Open your web browser and navigate to http://localhost:3000 to access the application.
