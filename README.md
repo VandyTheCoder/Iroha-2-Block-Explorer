@@ -60,3 +60,7 @@ This project is licensed under the [LICENSE NAME] - see the LICENSE file for det
 If you have any questions or need assistance, feel free to contact us at vandysodanheang@gmail.com.
 
 Thank you for using ***Iroha 2 - Block Explorer***! We hope you find it useful and enjoy working with the application.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
