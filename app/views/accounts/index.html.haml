@@ -1,0 +1,35 @@
+#account-page
+  .container
+    .row
+      .col-md-12
+        .m-t-25
+        .sorakh-panel
+          .title
+            %h4
+              = t("accounts")
+          .table-responsive
+            %table.table
+              %thead
+                %tr
+                  %th.sticky-cell{style: "width: 25%"}= t("account_name")
+                  - @asset_definitions.each do |definition|
+                    %th.text-center= definition
+              %tbody
+                - @accounts["data"]&.each do |account|
+                  - account_assets = account["assets"]
+                  - asset_hash = Hash.new
+                  - account_assets.each do |asset|
+                    - definition = asset[1]["id"]["definitionId"]
+                    - quantity = asset[1]["value"].first[1]
+
+                    - asset_definition_id = "#{definition["name"]["string"]}##{definition["domainId"]["name"]["string"]}"
+                    - asset_value = quantity
+                    - asset_hash[asset_definition_id] = asset_value
+                  %tr
+                    %td.sticky-cell= "#{account["id"]["name"]["string"]}@#{account["id"]["domainId"]["name"]["string"]}"
+                    - @asset_definitions.each do |definition|
+                      - balance = asset_hash[definition].present? ? (asset_hash[definition]) : 0.to_s
+                      - balance = balance.to_s.include?("fixedPoint") ? balance["fixedPoint"] : balance
+                      %td.text-center= balance
+
+        = render "partials/pagination", data: @accounts

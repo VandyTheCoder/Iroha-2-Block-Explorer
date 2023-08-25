@@ -1,0 +1,8 @@
+%nav{"aria-label" => "Page navigation example"}
+  %ul.pagination.sorakh-pagination
+    - if @page.to_i > 1
+      %li.page-item
+        = render_prev_button(page: @page)
+    - if (@page.to_i + 10) < data["total"].to_i 
+      %li.page-item
+        = render_next_button(page: @page)

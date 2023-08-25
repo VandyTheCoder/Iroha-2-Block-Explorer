@@ -1,4 +1,36 @@
 module ApplicationHelper
+  def render_prev_button(page)
+    if controller_name == "home_page"
+      return link_to root_url(index: (@page.to_i - 10)), class: "page-link" do
+        t("previous")
+      end
+    elsif controller_name == "accounts"
+      return link_to accounts_index_url(index: (@page.to_i - 10)), class: "page-link" do
+        t("previous")
+      end
+    else
+      return link_to assets_index_url(index: (@page.to_i - 10)), class: "page-link" do
+        t("previous")
+      end
+    end
+  end
+
+  def render_next_button(page)
+    if controller_name == "home_page"
+      return link_to root_url(index: (@page.to_i + 10)), class: "page-link" do
+        t("next")
+      end
+    elsif controller_name == "accounts"
+      return link_to accounts_index_url(index: (@page.to_i + 10)), class: "page-link" do
+        t("next")
+      end
+    else
+      return link_to assets_index_url(index: (@page.to_i + 10)), class: "page-link" do
+        t("next")
+      end
+    end
+  end
+
   def get_instruction(instruction)
     case
     when instruction["transferBox"].present?

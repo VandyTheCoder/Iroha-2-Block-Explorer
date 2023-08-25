@@ -11,12 +11,19 @@
       %ul.navbar-nav.ms-auto.mb-2.mb-lg-0
         %li.nav-item
           = link_to root_url, class: "nav-link nav-link-button #{("active" if controller_name == "home_page")}", "aria-current" => "page" do
+            %span.icon-grid
             = t("blocks")
-        -# %li.nav-item
-        -#   = link_to transaction_index_url, class: "nav-link nav-link-button #{("active" if controller_name == "transaction")}", "aria-current" => "page" do
-        -#     = t("transactions")
+        %li.nav-item
+          = link_to accounts_index_url, class: "nav-link nav-link-button #{("active" if controller_name == "accounts")}", "aria-current" => "page" do
+            %span.icon-user
+            = t("accounts")
+        %li.nav-item
+          = link_to assets_index_url, class: "nav-link nav-link-button #{("active" if controller_name == "assets")}", "aria-current" => "page" do
+            %span.icon-diamond
+            = t("assets")
         %li.nav-item.dropdown
           %a.nav-link.nav-link-button.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#", role: "button"}
+            %span.icon-flag
             - if I18n.locale.to_s == "en"
               English
             - else

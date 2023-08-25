@@ -16,3 +16,10 @@ td {
     color: #AA9999;
   }
 }
+
+.sticky-cell {
+  position: sticky;
+  left: 0;
+  background-color: #FAFAFA !important;
+  border-right: 1px solid #EAEAEA !important;
+}

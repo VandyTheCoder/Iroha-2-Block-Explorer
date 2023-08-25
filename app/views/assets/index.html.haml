@@ -1,0 +1,29 @@
+#asset-definitions
+  .container
+    .row
+      .col-md-12
+        .m-t-25
+        .sorakh-panel
+          .title
+            %h4= t("assets")
+          .table-responsive
+            %table.table
+              %thead
+                %tr
+                  %th= t("definition")
+                  %th= t("asset_type")
+                  %th= t("mintable")
+                  %th.text-center= t("circulating_supply")
+                  %th.text-center= t("holders")
+              %tbody
+                - @asset_definitions["data"]&.each do |asset_definition|
+                  %tr
+                    %td= asset_definition["assetDefinitionId"]
+                    %td= asset_definition["type"]
+                    %td= asset_definition["mintable"]
+                    %td.text-center= asset_definition["circulatingSupply"]
+                    %td.text-center= asset_definition["holders"]
+                    
+
+
+        = render "partials/pagination", data: @asset_definitions
